@@ -51,5 +51,7 @@
 - Video files should be in .mp4 or .mov format.
 - Keep the start and end of each clip in status 0, with the actor looking ahead, mouth closed, and smiling.
 
+Futher Reading:- https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/custom-avatar-record-video-samples
+
 ## **Next Steps**
 After recording, ensure the video data is well-prepared and processed to meet the required data quality for model training. The final avatar will reflect the conditions of the training data, so maintaining consistency and quality during recording is crucial.
