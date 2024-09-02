@@ -1,4 +1,4 @@
-**Creating Maria: AI Avatar in Azure AI**
+## ***Creating Maria: AI Avatar in Azure AI***
 
 Welcome to the repository for exploring the exciting capabilities of Azure AI's Text to Speech (TTS) Avatar service. This repository serves as a detailed guide to creating, customizing, and deploying photorealistic avatars with natural-sounding voices. We will walk you through the entire process, from creating custom avatars and neural voices to integrating them into interactive applications.
 
