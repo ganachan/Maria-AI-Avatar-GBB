@@ -1,1 +1,56 @@
+## **Recording Environment**
+
+### **Background Requirement**
+- **Use a clean, smooth, and pure-colored background**, ideally a green screen.
+- Ensure the background is well-lit and free from shadows.
+- Keep the actor 0.5m - 1m away from the background to avoid shadows.
+
+### **Lighting**
+- Ensure even and bright lighting on the actor's face.
+- Avoid shadows and reflections on the actor's face, glasses, and clothes.
+- Use stable artificial light sources to avoid changes in ambient light.
+
+### **Devices**
+- **Camera**: Minimum 1080p resolution at 25 FPS.
+- Ensure the camera and lighting position remains consistent during the entire shoot.
+- A teleprompter can be used for scripts but should not distract the actor's gaze.
+
+## **Appearance of the Actor**
+
+### **Hair**
+- Keep hair neat, smooth, and glossy.
+- Ensure hair does not obscure the face or eyes.
+- Avoid messy hair or hair that changes position too much during the recording.
+
+### **Clothing**
+- Avoid loose, heavy, or complex clothing that may impact consistency.
+- Avoid reflective or translucent materials, and ensure the clothing contrasts with the background.
+
+### **Face**
+- Ensure the actor's face is clearly visible and free of obstructions like hair, sunglasses, or accessories.
+
+## **What Video Clips to Record**
+
+### **Status 0 Speaking**
+- The actor maintains a natural posture while speaking for 3-5 minutes.
+- Slight movements like head or shoulder shifts are allowed, but avoid excessive motion.
+
+### **Naturally Speaking**
+- The actor speaks with natural hand gestures, ensuring hands return to status 0 after gestures.
+- Record a minimum of 5 minutes, up to 30 minutes in total.
+
+### **Silent Status**
+- The actor maintains status 0 without speaking for 1 minute, portraying a relaxed listening or waiting posture.
+
+### **Gestures (Optional)**
+- Gesture clips should be under 10 seconds, starting and ending in status 0.
+- No more than 10 gestures per custom avatar model.
+
+## **Data Requirements**
+- Ensure consistent size, position, brightness, and contrast of the character during the video processing.
+- Video files should be in .mp4 or .mov format.
+- Keep the start and end of each clip in status 0, with the actor looking ahead, mouth closed, and smiling.
+
+## **Next Steps**
+After recording, ensure the video data is well-prepared and processed to meet the required data quality for model training. The final avatar will reflect the conditions of the training data, so maintaining consistency and quality during recording is crucial.
 
