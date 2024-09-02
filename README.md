@@ -29,7 +29,7 @@ To get started with this repository, clone the repository to your local machine 
 git clone https://github.com/your-username/Maria-AI-Avatar-GBB.git
 cd Maria-AI-Avatar-GBB
 
-## Prerequisites
+>> Prerequisites
 Before you begin, ensure you have the following prerequisites in place:
 
 An active Azure subscription
@@ -42,4 +42,4 @@ At Microsoft, we are committed to developing AI that is fair, reliable, and safe
 ## Conclusion
 This repository aims to provide a step-by-step guide to the creation of Maria using Azure AI’s Text to Speech Avatar service. Whether you are a developer looking to enhance customer engagement or a content creator exploring new avenues for interactive media, this guide will help you get the most out of Azure AI's TTS Avatar capabilities.
 
-Happy exploring!
+Happy exploring!>>
