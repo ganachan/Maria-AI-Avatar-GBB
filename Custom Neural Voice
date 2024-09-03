@@ -1,0 +1,46 @@
+## Key Points for Custom Neural Voice (CNV):
+
+### What is Custom Neural Voice (CNV)?
+- **Custom Neural Voice (CNV)** allows you to create a unique, customized, synthetic voice for your applications.
+- **CNV** is built on neural text-to-speech technology, enabling rich speaking styles and cross-language adaptability.
+- **CNV Lite** is available for demo and evaluation before committing to professional recordings.
+
+### Important Considerations:
+- **Access to CNV** is limited based on eligibility and usage criteria. You must request access via the intake form.
+- Proper **persona design**, script selection, and high-quality audio recording are critical for creating a successful CNV.
+
+### Process to Create a Custom Neural Voice:
+1. **Design Persona:**
+   - Create a persona brief that defines the features and character behind the voice, guiding the entire voice creation process.
+
+2. **Select Recording Script:**
+   - Choose scripts that match your voice's user scenarios, incorporating various sentence types like statements, questions, and exclamations.
+
+3. **Create a Project in Speech Studio:**
+   - Set up a project to manage your data, voice models, tests, and endpoints. Projects should be region and language-specific.
+
+4. **Set Up Voice Talent:**
+   - Record the voice talent’s consent statement. This is mandatory before training a neural voice.
+
+5. **Prepare Training Data:**
+   - Record audio in a professional studio to maintain high quality. Consistency in volume, pitch, and expression is essential.
+
+6. **Train the Voice Model:**
+   - Upload at least 300 utterances for training. Pass all data quality checks before proceeding with the training.
+
+7. **Test Your Voice:**
+   - Use test scripts covering various use cases to evaluate the model's performance, both within and outside the training dataset.
+
+8. **Deploy and Use the Voice Model:**
+   - Deploy the trained voice model to a custom endpoint. Use the REST API, Speech SDK, or Speech Studio for text-to-speech conversions.
+
+### Components of Custom Neural Voice:
+- **Text Analyzer:** Converts text into phoneme sequences.
+- **Neural Acoustic Model:** Predicts acoustic features like timbre, style, speed, and intonations.
+- **Neural Vocoder:** Converts acoustic features into audible waves, generating synthetic speech.
+
+### Migration to Custom Neural Voice:
+- If you are using the old version of Custom Voice, follow the migration guide to switch to Custom Neural Voice.
+
+### Responsible AI:
+- Adhere to Microsoft’s Responsible AI guidelines when creating and deploying Custom Neural Voice models.
