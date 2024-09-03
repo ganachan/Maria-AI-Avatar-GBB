@@ -1,0 +1,124 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# Import necessary libraries
+import json
+import logging
+import os
+import sys
+import time
+import uuid
+from azure.identity import DefaultAzureCredential
+import requests
+
+# Set up logging configuration
+logging.basicConfig(stream=sys.stdout, level=logging.INFO,  # set to logging.DEBUG for verbose output
+                    format="[%(asctime)s] %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p %Z")
+logger = logging.getLogger(__name__)
+
+# Set up environment variables
+SPEECH_ENDPOINT = os.getenv('SPEECH_ENDPOINT', "https://westus2.api.cognitive.microsoft.com")
+PASSWORDLESS_AUTHENTICATION = False  # Set to True if using passwordless authentication
+API_VERSION = "2024-04-15-preview"  # API version for the request
+
+# Function to create a unique job ID for the synthesis process
+def _create_job_id():
+    return uuid.uuid4()
+
+# Function to handle authentication, either using subscription key or Azure credentials
+def _authenticate():
+    if PASSWORDLESS_AUTHENTICATION:
+        # Use Azure Identity for passwordless authentication
+        credential = DefaultAzureCredential()
+        token = credential.get_token('https://cognitiveservices.azure.com/.default')
+        return {'Authorization': f'Bearer {token.token}'}
+    else:
+        # Use the subscription key for authentication
+        SUBSCRIPTION_KEY = os.getenv("SUBSCRIPTION_KEY", 'xxxxxxxx')
+        return {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
+
+# Function to submit the synthesis job for processing
+def submit_synthesis(job_id: str):
+    url = f'{SPEECH_ENDPOINT}/avatar/batchsyntheses/{job_id}?api-version={API_VERSION}'
+    header = {
+        'Content-Type': 'application/json'
+    }
+    header.update(_authenticate())  # Add authentication headers
+
+    # Payload configuration for the synthesis job
+    payload = {
+        'synthesisConfig': {
+            "voice": 'Marrie VoiceNeural',  # Custom neural voice name
+        },
+        'customVoices': {
+            "Marrie VoiceNeural": "xxxxxxx"  # Custom voice ID
+        },
+        "inputKind": "plainText",
+        "inputs": [
+            {
+                "content": "Hi, I'm Marrie, a virtual assistant created for AI GBB Team by Microsoft.",  # Text to be synthesized
+            },
+        ],
+        "avatarConfig": {
+            "customized": True,  # True because we are using a custom avatar
+            "talkingAvatarCharacter": 'Marrie-B',  # Custom avatar name
+            "talkingAvatarStyle": 'Marrie-B-2',  # Style for the custom avatar
+            "videoFormat": "mp4",  # Video format: mp4 or webm
+            "videoCodec": "h264",  # Video codec: hevc, h264, or vp9
+            "subtitleType": "soft_embedded",  # Subtitle type
+            "backgroundColor": "#FFFFFFFF",  # Background color (white)
+        }
+    }
+
+    # Send the request to submit the synthesis job
+    response = requests.put(url, json=payload, headers=header)
+    if response.status_code < 400:
+        logger.info('Batch avatar synthesis job submitted successfully')
+        logger.info(f'Job ID: {response.json()["id"]}')
+        return True
+    else:
+        logger.error(f'Failed to submit batch avatar synthesis job: [{response.status_code}], {response.text}')
+        return False
+
+# Function to retrieve the status of the synthesis job
+def get_synthesis(job_id):
+    url = f'{SPEECH_ENDPOINT}/avatar/batchsyntheses/{job_id}?api-version={API_VERSION}'
+    header = _authenticate()
+
+    response = requests.get(url, headers=header)
+    if response.status_code < 400:
+        logger.debug('Get batch synthesis job successfully')
+        logger.debug(response.json())
+        if response.json()['status'] == 'Succeeded':
+            logger.info(f'Batch synthesis job succeeded, download URL: {response.json()["outputs"]["result"]}')
+        return response.json()['status']
+    else:
+        logger.error(f'Failed to get batch synthesis job: {response.text}')
+
+# Function to list all synthesis jobs associated with the subscription
+def list_synthesis_jobs(skip: int = 0, max_page_size: int = 100):
+    url = f'{SPEECH_ENDPOINT}/avatar/batchsyntheses?api-version={API_VERSION}&skip={skip}&maxpagesize={max_page_size}'
+    header = _authenticate()
+
+    response = requests.get(url, headers=header)
+    if response.status_code < 400:
+        logger.info(f'List batch synthesis jobs successfully, got {len(response.json()["values"])} jobs')
+        logger.info(response.json())
+    else:
+        logger.error(f'Failed to list batch synthesis jobs: {response.text}')
+
+# Main execution flow
+if __name__ == '__main__':
+    job_id = _create_job_id()
+    if submit_synthesis(job_id):
+        while True:
+            status = get_synthesis(job_id)
+            if status == 'Succeeded':
+                logger.info('Batch avatar synthesis job succeeded')
+                break
+            elif status == 'Failed':
+                logger.error('Batch avatar synthesis job failed')
+                break
+            else:
+                logger.info(f'Batch avatar synthesis job is still running, status [{status}]')
+                time.sleep(5)
