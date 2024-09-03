@@ -1,0 +1,26 @@
+## Key Points for Post-Video Collection Process
+
+### Manual Training Process:
+- After collecting video samples, the custom avatar undergoes a manual training process to create the text-to-speech model.
+- You will be notified once the model training is successfully completed.
+
+### Deploying the Custom Avatar:
+- Before using the custom avatar, it must be deployed to an endpoint.
+- You can create up to 10 custom avatar endpoints per standard (S0) Speech resource.
+
+### Using the Deployed Avatar:
+- The deployed avatar will appear in the avatar list within Speech Studio, under both text-to-speech and live chat avatars.
+- You can also access the avatar via API by specifying the avatar model name.
+
+### Steps to Add a Deployment Endpoint:
+1. **Sign in to Speech Studio.**
+2. **Navigate to Custom Avatar > Your Project Name > Train Model.**
+3. **Select the trained model** you want to deploy.
+4. **Click the "Deploy Model" button** to confirm and create the endpoint.
+5. **Access the deployed avatar** in the Speech Studio portal for testing and video creation using text input.
+
+### Utilizing the Deployed Avatar:
+- Once deployed, you can use the avatar to create videos directly from the Speech Studio or through API integration.
+
+### Check your avatar
+- Once your model is successfully deployed as an endpoint, you can select the endpoint link on the Deploy model page. There, you'll find a link to the text to speech avatar portal on Speech Studio, where you can try and create videos with your custom avatar using text input.
