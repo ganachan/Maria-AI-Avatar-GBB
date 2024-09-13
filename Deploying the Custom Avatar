@@ -1,5 +1,7 @@
 ## Key Points for Post-Video Collection Process
 
+##Get consent video: Obtain a video recording of the consent statement. The consent statement is a video recording of the avatar talent reading a statement, giving consent to the usage of their image and voice data to train a custom text to speech avatar model.
+
 ### Manual Training Process:
 - After collecting video samples, the custom avatar undergoes a manual training process to create the text-to-speech model.
 - You will be notified once the model training is successfully completed.
@@ -24,3 +26,5 @@
 
 ### Check your avatar
 - Once your model is successfully deployed as an endpoint, you can select the endpoint link on the Deploy model page. There, you'll find a link to the text to speech avatar portal on Speech Studio, where you can try and create videos with your custom avatar using text input.
+
+
