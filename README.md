@@ -21,6 +21,9 @@ This repository is organized into several key sections, each focusing on a diffe
 - **Text to Speech with Custom Avatar and Custom Neural Voice**: Combine custom avatars and voices to create fully integrated, lifelike AI agents.
 - **Interactive Experience with the Avatar**: Explore how to create interactive applications using Azure AI, including real-time chatbots and other engaging experiences.
 
+![image](https://github.com/user-attachments/assets/981ff3d8-3a40-4e67-bc56-d1cbda38ff42)
+
+
 ## Getting Started
 
 To get started with this repository, clone the repository to your local machine and follow the instructions in each section to set up your environment and explore the features.
